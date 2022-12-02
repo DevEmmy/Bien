@@ -1,5 +1,8 @@
 const transaction = require("../models/transaction.models")
 const User = require("../models/user.models")
+const jwt_secret = process.env.JWT_SECRET
+const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
 
 const signIn = async (req, res)=>{
     const {email, password} = req.body;
@@ -26,12 +29,14 @@ const signIn = async (req, res)=>{
 
 const signUp = async (req, res)=>{
     const userDetails = req.body;
+    // console.log(userDetails)
     const {password} = req.body
     User.findOne({email: userDetails.email})
     .then(resp =>{
         if(!resp){
+            console.log(password)
             bcrypt.hash(password, 8)
-    .then(hashedPassword => {
+        .then(hashedPassword => {
         userDetails.password = hashedPassword;
         const newUser = new User(userDetails);
         newUser.save()
@@ -68,5 +73,14 @@ const signUp = async (req, res)=>{
         res.status(403).json({message: "This email is attached to an account"})
     }
 
-}).catch(err => res.status(400).json(err))
+    })
+    .catch(err => res.status(400).json({
+    error: err, 
+    message: "An Error Occured"
+        }))
+    }
+
+module.exports = {
+    signIn,
+    signUp
 }
