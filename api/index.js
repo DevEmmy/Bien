@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt")
 require('dotenv').config()
 const bodyParser = require("body-parser")
 const userRouter = require("./routes/userRoutes")
+const transactionRouter = require("./routes/transactionRoutes")
 
 const app = express()
 const port = process.env.PORT || 2322
@@ -23,6 +24,7 @@ const connection = mongoose.connection
 connection.once('open', ()=>{console.log('Database running Successfully')})
 
 app.use("/auth", userRouter)
+app.use("/transaction", transactionRouter)
 
 
 app.listen(port, () => console.log(`Server is now running on: http://localhost:${port}`))
