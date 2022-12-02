@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <BannerContainer>
         <div>
-            <Text size="60px" weight="600">
+            <Text size="30px" weight="600">
                 Catch Smart <span>Investment</span> for Smart Startups.
             </Text>
             <Text size={"18px"}>

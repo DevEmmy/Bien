@@ -28,6 +28,12 @@ export const NavContainer = styled.div`
             cursor: pointer;
         }
     }
+
+    @media only screen and (max-width: 500px){
+        ul{
+            display: none;
+        }
+    }
 `
 
 export const Logo = styled.div`
@@ -55,6 +61,12 @@ export const BannerContainer = styled.div`
     grid-template-columns: 1fr 1fr;
     gap: 50px;
     
+    @media only screen and (max-width: 500px){
+        width: 100%;
+        grid-template-columns: none;
+        padding: 20vh 20px;
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
 `
 
 export const Text = styled.p`
@@ -70,6 +82,11 @@ export const Text = styled.p`
     span{
         color: ${yellow};
     }
+
+    @media only screen and (max-width: 500px) {
+        width: 100%;
+        /* padding: 10px 10px; */
+    }
 `
 
 export const TwoWayGrid = styled.div`
@@ -83,6 +100,11 @@ export const TwoWayGrid = styled.div`
     img{
         width: 100%;
         height: 100%;
+    }
+
+    @media only screen and (max-width: 500px){
+        grid-template-columns: none;
+        padding: 10px;
     }
 `
 
@@ -135,6 +157,12 @@ export const PricingContainer = styled.div`
                 padding: 4px 15px;
                 border-radius: 6px;
             }
+        }
+    }
+
+    @media only screen and (max-width: 500px){
+        .plans{
+            grid-template-columns: none;
         }
     }
 `

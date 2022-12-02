@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react/cjs/react.production.min';
 import Banner from './Banner'
 import Footer from './Footer';
 import Nav from './Nav'
@@ -12,11 +13,20 @@ const pink = "rgb(255, 131, 114)";
 const yellow = "rgb(227, 238, 96)";
 
 const Homepage = () => {
+    const [width, setWidth] = useState(window.innerWidth)
+    
+    useEffect(()=>{
+        window.addEventListener("resize", ()=>{
+            setWidth(window.innerWidth)
+        })
+        console.log(window.innerWidth)
+    }, [])
+
   return (
     <Container>
         <Nav />
         <Banner />
-        <Text align="center" width="75%" padding="50px" margin="0 auto" color={green} size="30px" weight="600">
+        <Text align="center" width="75%" padding="50px" margin="0 auto" color={green} size="20px" weight="600">
             We give low risk financial oppurtunity to individuals on the Platform to help achieve thier financial goals and financial freedom.
         </Text>
 
