@@ -80,7 +80,16 @@ const signUp = async (req, res)=>{
         }))
     }
 
+const update = async (req, res)=>{
+    const user = req.user
+    const details = req.body;
+    User.findOneAndUpdate({_id: user._id}, details, {new: true})
+    .then(user => res.status(200).json(user))
+    .catch(err => res.status(400).json(err))
+}
+
 module.exports = {
     signIn,
-    signUp
+    signUp,
+    update
 }
